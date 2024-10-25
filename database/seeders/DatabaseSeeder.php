@@ -16,18 +16,24 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // \App\Models\User::factory(10)->create();
+        // \App\Models\User::factory(1)->create();
 
-        // \App\Models\User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
+        \App\Models\User::factory()->create([
+            'name' => 'admin',
+            'email' => 'admin@example.com',
+            'user_type' => 'admin',
+            'password' => '1234',
+        ]);
 
-        Schema::disableForeignKeyConstraints() ;
-        Product::truncate();
-        Schema::enableForeignKeyConstraints();
-        Product::factory(10)->create();
-        Gallery::factory(10)->create();
+        $this->call([
+            Product2Seeder::class,
+        ]);
+        
+        // Schema::disableForeignKeyConstraints() ;
+        // Product::truncate();
+        // Schema::enableForeignKeyConstraints();
+        // // Product::factory(10)->create();
+        // Gallery::factory(10)->create();
     }
 
 }

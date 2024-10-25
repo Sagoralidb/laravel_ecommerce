@@ -156,6 +156,8 @@ return [
     */
 
     'providers' => ServiceProvider::defaultProviders()->merge([
+
+   
         /*
          * Package Service Providers...
          */
@@ -163,11 +165,17 @@ return [
         /*
          * Application Service Providers...
          */
+        Jenssegers\Agent\AgentServiceProvider::class,
         App\Providers\AppServiceProvider::class,
         App\Providers\AuthServiceProvider::class,
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+       
+
+      
+
+        
     ])->toArray(),
 
     /*
@@ -183,6 +191,8 @@ return [
 
     'aliases' => Facade::defaultAliases()->merge([
         // 'Example' => App\Facades\Example::class,
+        'Agent' => Jenssegers\Agent\Facades\Agent::class,
+      
     ])->toArray(),
 
 ];

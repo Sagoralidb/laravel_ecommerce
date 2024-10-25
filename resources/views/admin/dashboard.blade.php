@@ -1,3 +1,4 @@
+{{--  Project2 --}}
 @extends('layouts.admin')
 
 @section('title','Admin Dashboad')
@@ -7,121 +8,307 @@
 @endsection
 
 @section('content')
-<div class="content-wrapper">
-    <div class="content">                
-      <div class="row">
-            <div class="col-lg-12">
-              <div class="card card-default text-dark">
-                <div class="card-header">
-                  <h1 class="mb-3">Introduction</h1>
-                  <p style="text-transform:none">Thank you for purchasing Mono dashboard, a fully featured admin template and UI kit built on top of awesome Bootstrap 4. It is a very useful bootstrap admin dashboard, which allows you to build products like admin panels, content managements systems and CRMs. It is fully responsive and easily customizable. Its UI elements can be used very easily on any page.</p>
-                </div>
-
-                <div class="card-body pt-4">
-                  <h2 class="mt-2 mb-2">Getting Started</h2>
-                  <p> This documentation will give you an understanding of how <strong>Mono Dashboard</strong> is structured and guide you in performing common functions. If you require further assistance not covered in this documentation, please contact me at <a href="mailto:theme@iamabdus.com">theme@iamabdus.com</a></p>
-
-                </div>
-
-                <div class="card-body pt-4">
-                  <h2 class="mt-2 mb-2">Set up</h2>
-                  <p class="mb-1">Mono uses gulp for workflow automation. It's a toolkit for automating painful or time-consuming tasks in your development workflow, so you can stop messing around and build something. </p><br><br>
-                  <p class="mb-1">
-                    <strong>Step-1:</strong> Make sure you have a recent version of <a target="_blank"
-                      href="https://nodejs.org/en/">Node.js</a> installed in your local machine.
-                  </p>
-                  <p class="mb-1">
-                    <strong>Step-2:</strong> Open <strong>terminal</strong> in the project root directory.
-                  </p>
-                  <p class="mb-4">
-                    <strong>Step-3:</strong> Then run the following commands accordingly into terminal:
-     
-                  <pre class="language-javascript">
-                  //install gulp-cli globally
-                  $ npm install gulp-cli -g
-
-                  //install devDependencies
-                  $ npm install
-
-                  //run project
-                  $ gulp
-                  </pre>
-                  <br>
-
-                    This will fire default gulp task which includes: launching BrowserSync, build all html files, javascript
-                    minification, sass compilation and lanching watch task. BrowserSync will create dev server and sync your browser
-                    with your code editor.
-                  </p>
-                  <p class="mt-2">
-                    You are all done to edit SCSS files and gulp will compile your SCSS to CSS.
-                  </p>
-
-                </div>
-
-                <div class="card-body pt-4">
-                  <h2 class="mt-2 mb-5">File Structure</h2>
-                    <ul>
-                      <li>
-                        <strong> <i class="mdi mdi-folder text-warning"></i> dist</strong>
-                      </li>
-                      <li>
-                        <strong><i class="mdi mdi-folder text-warning"></i> node_modules</strong>
-                      </li>
-                      <li>
-                        <strong><i class="mdi mdi-folder text-warning"></i> src</strong>
-                        <ul class="ml-6">
-                          <li>
-                            <strong><i class="mdi mdi-folder text-warning"></i> assets</strong>
-                            <ul class="ml-5">
-                              <li>
-                                <strong><i class="mdi mdi-folder text-warning"></i> img</strong>
-                              </li>
-                              <li>
-                                <strong><i class="mdi mdi-folder text-warning"></i> js</strong>
-                              </li>
-                              <li>
-                                <strong><i class="mdi mdi-folder text-warning"></i> plugins </strong>
-                              </li>
-                              <li>
-                                <strong><i class="mdi mdi-folder text-warning"></i> scss</strong>
-                              </li>
-                            </ul>
-                          </li>
-                          <li>
-                            <strong><i class="mdi mdi-file-document text-color"></i> index.html</strong>
-                          </li>
-                        </ul>
-                      </li>
-                      <li>
-                        <strong><i class="mdi mdi-file-document text-color"></i> gulpfile.js</strong>
-                      </li>
-                      <li>
-                        <strong><i class="mdi mdi-file-document text-color"></i> package.json</strong>
-                      </li>
-                      <li>
-                        <strong><i class="mdi mdi-file-document text-color"></i> .gitignore</strong>
-                      </li>
-                    </ul>
-
-                </div>
-
-                <!-- Button -->
-                <div class="d-flex justify-content-end pb-6 px-6">
-
-                  <a href="navbar-customization.html" class="btn btn-primary btn-pill">navbar customization
-                    <i class="mdi mdi-arrow-right"></i>
-                  </a>
-
+<!-- Content Header (Page header) -->
+<section class="content-header">					
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1>Dashboard</h1>
+            </div>
+            <div class="col-sm-6">
+                
+            </div>
+        </div>
+    </div>
+    <!-- /.container-fluid -->
+</section>
+<!-- Main content -->
+<section class="content">
+    <!-- Default box -->
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-3 col-6">
+                <!-- small box -->
+                <div class="small-box bg-info">
+                  <div class="inner">
+                    <h3>{{$totalPendding ? $totalPendding:'0'}}</h3>
+    
+                    <p>Pendding Orders</p>
+                  </div>
+                  <div class="icon">
+                    <i class="ion ion-bag"></i>
+                  </div>
+                  <a href="{{route('order.index')}}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                 </div>
               </div>
-            </div>
+              <div class="col-lg-3 col-6">
+                <!-- small box -->
+                <div class="small-box bg-success">
+                  <div class="inner">
+                    <h3>{{ $totalOrders ? $totalOrders : '' }}</h3>
+    
+                    <p>Total Order</p>
+                  </div>
+                  <div class="icon">
+                    <i class="ion ion-bag"></i>
+                  </div>
+                  <a href="{{route('order.index')}}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                </div>
+              </div>
+              <div class="col-lg-3 col-6">
+                <!-- small box -->
+                <div class="small-box bg-danger">
+                  <div class="inner">
+                    <h3>{{$OrderCancelled ? $OrderCancelled :'0'}}</h3>
+    
+                    <p>Order Cancelled</p>
+                  </div>
+                  <div class="icon">
+                    <i class="ion ion-pie-graph"></i>
+                  </div>
+                  <a href="{{route('order.index')}}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                </div>
+              </div>
+              <div class="col-lg-3 col-6">
+                <!-- small box -->
+                <div class="small-box bg-warning">
+                  <div class="inner">
+                    <h3>{{$totalUser}}</h3>
+    
+                    <p>Total User</p>
+                  </div>
+                  <div class="icon">
+                    <i class="ion ion-person-add"></i>
+                  </div>
+                  <a href="{{route('users.index')}}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                </div>
+              </div>
 
-          </div>
-      </div>
-          
-  </div>
+              <div class="col-md-3">
+                <div class="card card-primary collapsed-card">
+                  <div class="card-header">
+                    <h3 class="card-title">Total Sale</h3>
+    
+                    <div class="card-tools">
+                      <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-plus"></i>
+                      </button>
+                    </div>
+                    <!-- /.card-tools -->
+                  </div>
+                  <!-- /.card-header -->
+                  <div class="card-body">
+                   <h5>{{config('stripe.currency_symbol')}}{{number_format($totalRevenue ? $totalRevenue: '0',2)}}</h5> 
+                  </div>
+                  <!-- /.card-body -->
+                </div>
+                <!-- /.card -->
+              </div>
+              <div class="col-md-3">
+                <div class="card card-success collapsed-card">
+                  <div class="card-header">
+                    <h3 class="card-title">Sale of ({{$currentMonthName}})</h3> {{-- Sale of This month --}}
+                    
+    
+                    <div class="card-tools">
+                      <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-plus"></i>
+                      </button>
+                    </div>
+                    <!-- /.card-tools -->
+                  </div>
+                  <!-- /.card-header -->
+                  <div class="card-body">
+                    <h5>{{ config('stripe.currency_symbol') }}{{ number_format($revenueThisMonth ? (float)$revenueThisMonth : 0, 2) }}</h5>
+                        
+                  </div>
+                  <!-- /.card-body -->
+                </div>
+                <!-- /.card -->
+              </div>
+              <div class="col-md-3">
+                <div class="card card-info collapsed-card">
+                  <div class="card-header">
+                    <h3 class="card-title">Last month sale({{$lastMonthName}})</h3> {{--Sale of last month--}}
+    
+                    <div class="card-tools">
+                      <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-plus"></i>
+                      </button>
+                    </div>
+                    <!-- /.card-tools -->
+                  </div>
+                  <!-- /.card-header -->
+                  <div class="card-body">
+                    {{-- <h5>{{config('stripe.currency_symbol')}}{{number_format($revenueLastMonth ? $revenueLastMonth: '',2)}}</h5> --}}
+                    <h5>{{ config('stripe.currency_symbol') }}{{ number_format((float) ($revenueLastMonth ?? 0), 2) }}</h5>
+
+                  </div>
+                  <!-- /.card-body -->
+                </div>
+                <!-- /.card -->
+              </div>
+              <div class="col-md-3">
+                <div class="card card-danger collapsed-card">
+                  <div class="card-header">
+                    <h3 class="card-title">Sale of last 30 day</h3>
+    
+                    <div class="card-tools">
+                      <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-plus"></i>
+                      </button>
+                    </div>
+                    <!-- /.card-tools -->
+                  </div>
+                  <!-- /.card-header -->
+                  <div class="card-body">
+                    {{-- <h5>{{config('stripe.currency_symbol')}}{{number_format($revenueLast_30_Dasy ? $revenueLast_30_Dasy: '',2)}}</h5> --}}
+                    <h5>{{ config('stripe.currency_symbol') }}{{ number_format((float) ($revenueLast_30_Dasy ?? 0), 2) }}</h5>
+
+                  </div>
+                  <!-- /.card-body -->
+                </div>
+                <!-- /.card -->
+              </div>
+            
+            
+            <div class="col-lg-4 col-6">							
+                <div class="small-box card">
+                    <div class="inner">
+                        <h3>{{$totalProducts ? $totalProducts: ''}}</h3>
+                        <p>Total Products</p>
+                    </div>
+                    <div class="icon">
+                        <i class="ion ion-stats-bars"></i>
+                    </div>
+                    <a href="{{route('products.index')}}" class="small-box-footer text-dark">More info <i class="fas fa-arrow-circle-right"></i></a>
+                </div>
+            </div>
+            <div class="col-lg-4 col-6">							
+                <div class="small-box card">
+                    <div class="inner">
+                        <h3>{{$totalCustomer ? $totalCustomer:''}}</h3>
+                        <p>Total Customers</p>
+                    </div>
+                    <div class="icon">
+                        <i class="ion ion-stats-bars"></i>
+                    </div>
+                    <a href="{{route('users.index')}}" class="small-box-footer text-dark">More info <i class="fas fa-arrow-circle-right"></i></a>
+                </div>
+            </div>
+            <div class="col-lg-4 col-6">							
+                <div class="small-box card">
+                    <div class="inner">
+                        <h3>{{$totalAdmin ? $totalAdmin:''}}</h3>
+                        <p>Total Admin</p>
+                    </div>
+                    <div class="icon">
+                        <i class="ion ion-stats-bars"></i>
+                    </div>
+                    <a href="{{route('users.index')}}" class="small-box-footer text-dark">More info <i class="fas fa-arrow-circle-right"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>	
+   
+    {{-- Visitor count  --}}
+                    <div class="container">
+                        <h1 class="mt-5">User Graph</h1>
+                
+                        <div class="row mt-4">
+                            <div class="col-md-4">
+                                <div class="card text-white bg-primary mb-3">
+                                    <div class="card-header">Today's Visitors</div>
+                                    <div class="card-body">
+                                        <h5 class="card-title">{{ $todayVisitors }}</h5>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-8">
+                                <canvas id="visitorsChart"></canvas>
+                            </div>
+                        </div>
+                
+                        <div class="row mt-4">
+                            <div class="col-md-6">
+                                <canvas id="deviceChart"></canvas>
+                            </div>
+                            <div class="col-md-6">
+                                <canvas id="browserChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+    <!-- /.card -->
+</section>
+<!-- /.content -->
 @endsection
 
 @section('scripts')
-    
+<script>
+    const visitorsCtx = document.getElementById('visitorsChart').getContext('2d');
+    const visitorsChart = new Chart(visitorsCtx, {
+        type: 'line',
+        data: {
+            labels: @json(array_keys($dailyVisitors)),
+            datasets: [{
+                label: 'Daily Visitors',
+                data: @json(array_values($dailyVisitors)),
+                borderColor: 'rgba(75, 192, 192, 1)',
+                backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+
+    const deviceCtx = document.getElementById('deviceChart').getContext('2d');
+    const deviceChart = new Chart(deviceCtx, {
+        type: 'doughnut',
+        data: {
+            labels: @json(array_keys($deviceData)),
+            datasets: [{
+                label: 'Device Types',
+                data: @json(array_values($deviceData)),
+                backgroundColor: [
+                    'rgba(255, 99, 132, 0.2)',
+                    'rgba(54, 162, 235, 0.2)',
+                    'rgba(255, 206, 86, 0.2)'
+                ],
+                borderColor: [
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 206, 86, 1)'
+                ],
+                borderWidth: 1
+            }]
+        }
+    });
+
+    const browserCtx = document.getElementById('browserChart').getContext('2d');
+    const browserChart = new Chart(browserCtx, {
+        type: 'pie',
+        data: {
+            labels: @json(array_keys($browserData)),
+            datasets: [{
+                label: 'Browsers',
+                data: @json(array_values($browserData)),
+                backgroundColor: [
+                    'rgba(255, 99, 132, 0.2)',
+                    'rgba(54, 162, 235, 0.2)',
+                    'rgba(255, 206, 86, 0.2)',
+                    'rgba(75, 192, 192, 0.2)'
+                ],
+                borderColor: [
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 206, 86, 1)',
+                    'rgba(75, 192, 192, 1)'
+                ],
+                borderWidth: 1
+            }]
+        }
+    });
+</script>
 @endsection

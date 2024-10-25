@@ -10,15 +10,15 @@ class Gallery extends Model
 {
     use HasFactory;
 
-    public $uploadDir       ='assets/site/img/';
+    // public $uploadDir       ='assets/site/img/';
 
-    protected $fillable     =['image','type'];
+    // protected $fillable     =['image','type'];
 
-    public function image() : Attribute
-    {
-        return Attribute::make(
-            get: fn ($image) => $this->uploadDir. $image
-        );
+    // public function image() : Attribute
+    // {
+    //     return Attribute::make(
+    //         get: fn ($image) => $this->uploadDir. $image
+    //     );
         
-    }
+    // }
 }
